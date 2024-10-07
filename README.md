@@ -37,20 +37,20 @@ This is a demo project using the NestJS framework to build an API for a product 
 
 ## Running the app
 
-### Development mode
-  ```bash
-    yarn run start
-  ```
-
-### Development mode
-  ```bash
-    yarn run start:dev
-  ```
-
-### Development mode
-  ```bash
-    yarn run start:prod
-  ```
+   ### Development mode
+     ```bash
+       yarn run start
+     ```
+   
+   ### Development mode
+     ```bash
+       yarn run start:dev
+     ```
+   
+   ### Development mode
+     ```bash
+       yarn run start:prod
+     ```
 
 
 ## API Endpoints
@@ -73,21 +73,20 @@ This is a demo project using the NestJS framework to build an API for a product 
 
 ## Testing
 
-### Unit tests
-  ```bash
-    yarn run test
-  ```
-
-### E2E tests
-  ```bash
-    yarn run test:e2e
-  ```
-
-### Test coverage
-  ```bash
-    yarn run test:cov
-  ```
-
+   ### Unit tests
+     ```bash
+       yarn run test
+     ```
+   
+   ### E2E tests
+     ```bash
+       yarn run test:e2e
+     ```
+   
+   ### Test coverage
+     ```bash
+       yarn run test:cov
+     ```
 
 ## Project Structure
 
