@@ -27,13 +27,18 @@ This is a demo project using the NestJS framework to build an API for a product 
    - Create a `.env` file in the root directory
    - Copy the content from `.env` (if it exists) or add the following:
      ```
-     DATABASE_HOST=localhost
-     DATABASE_PORT=5432
+     DATABASE_HOST=your_database_host
+     DATABASE_PORT=your_database_port
      DATABASE_USERNAME=your_username
      DATABASE_PASSWORD=your_password
      DATABASE_NAME=your_database_name
      ```
-   - Replace `your_username`, `your_password` and `your_database_name` with your PostgreSQL credentials
+   - Replace the placeholders with your PostgreSQL credentials:
+     - `your_database_host` (default: localhost)
+     - `your_database_port` (default: 5432)
+     - `your_username` (default: postgres)
+     - `your_password`
+     - `your_database_name`
 
 ## Running the app
 
