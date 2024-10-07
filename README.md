@@ -25,15 +25,15 @@ This is a demo project using the NestJS framework to build an API for a product 
 
 3. Set up the database:
    - Create a `.env` file in the root directory
-   - Copy the content from `.env.example` (if it exists) or add the following:
+   - Copy the content from `.env` (if it exists) or add the following:
      ```
      DATABASE_HOST=localhost
      DATABASE_PORT=5432
      DATABASE_USERNAME=your_username
      DATABASE_PASSWORD=your_password
-     DATABASE_NAME=hybrbaseapi
+     DATABASE_NAME=your_database_name
      ```
-   - Replace `your_username` and `your_password` with your PostgreSQL credentials
+   - Replace `your_username`, `your_password` and `your_database_name` with your PostgreSQL credentials
 
 ## Running the app
 
