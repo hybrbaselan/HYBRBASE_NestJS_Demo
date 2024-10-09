@@ -1,11 +1,14 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import { Controller, Get, Post, Body, Patch, Param, Delete, Query, Inject } from '@nestjs/common';
 import { ProductsService } from './products.service';
 import { CreateProductDto } from './dto/create-product.dto';
 import { UpdateProductDto } from './dto/update-product.dto';
+import { IProductsService } from './interfaces/products-service.interface';
 
 @Controller('products')
 export class ProductsController {
-  constructor(private readonly productsService: ProductsService) {}
+  constructor(
+    @Inject('IProductsService') private readonly productsService: IProductsService
+  ) {}
 
   @Post()
   create(@Body() createProductDto: CreateProductDto) {
@@ -13,8 +16,11 @@ export class ProductsController {
   }
 
   @Get()
-  findAll() {
-    return this.productsService.findAll();
+  findAll(@Query('page') page?: number, @Query('query') query?: string) {
+    if (query) {
+      query = query.replace(/^["'](.+(?=["']$))["']$/, '$1');
+    }
+    return this.productsService.findAll(page, query);
   }
 
   @Get(':id')
