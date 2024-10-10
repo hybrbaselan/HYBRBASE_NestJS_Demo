@@ -1,30 +1,24 @@
-import { TypeOrmModuleOptions } from '@nestjs/typeorm';
-import { ConfigService } from '@nestjs/config';
+import { DataSource, DataSourceOptions } from 'typeorm';
+import * as dotenv from 'dotenv';
 
-export const typeOrmConfig = (configService: ConfigService): TypeOrmModuleOptions => {
-  if (process.env.DATABASE_URL) {
-    return {
-      type: 'postgres',
-      url: configService.get('DATABASE_URL'),
-      entities: [__dirname + '/../**/*.entity{.ts,.js}'],
-      synchronize: false,
-      ssl: {
-        rejectUnauthorized: false
-      },
-      extra: {
-        max: 5
-      }
-    };
-  } else {
-    return {
-      type: 'postgres',
-      host: configService.get('database.host'),
-      port: +configService.get<number>('database.port'),
-      username: configService.get('database.username'),
-      password: configService.get('database.password'),
-      database: configService.get('database.name'),
-      entities: [__dirname + '/../**/*.entity{.ts,.js}'],
-      synchronize: configService.get('NODE_ENV') !== 'production',
-    };
+dotenv.config();
+
+if (!process.env.DATABASE_URL) {
+  throw new Error('DATABASE_URL is not set in the environment variables');
+}
+
+export const typeOrmConfig = (): DataSourceOptions => ({
+  type: 'postgres',
+  url: process.env.DATABASE_URL,
+  entities: [__dirname + '/../**/*.entity{.ts,.js}'],
+  migrations: [__dirname + '/../migrations/*{.ts,.js}'],
+  synchronize: false,
+  ssl: {
+    rejectUnauthorized: false
+  },
+  extra: {
+    max: 5
   }
-};
+});
+
+export default new DataSource(typeOrmConfig());
